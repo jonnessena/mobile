@@ -6,7 +6,8 @@ import com.claro.mobile.model.MobileDTO;
 
 public interface IMobileService {
 	
-	List<MobileDTO> listMobiles() throws Exception;
-	MobileDTO add(MobileDTO mob) throws Exception;
+	public List<MobileDTO> list() throws Exception;
+	public MobileDTO create(MobileDTO mob) throws Exception;
+	public MobileDTO find(long code) throws Exception;
 
 }

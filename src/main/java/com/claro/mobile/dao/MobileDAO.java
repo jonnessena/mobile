@@ -14,8 +14,18 @@ public class MobileDAO extends AbstractDAO implements IMobileDAO {
 	 */
 	private static final long serialVersionUID = -7982713956037719530L;
 
-	public List<Mobile> list() {
+	public List<Mobile> list() throws Exception {
 		return this.getEntityManager().createQuery("select m from Mobile m").getResultList();
+	}
+
+	public Mobile create(Mobile mob) throws Exception {
+		this.getEntityManager().persist(mob);
+		this.getEntityManager().flush();
+		return mob;
+	}
+
+	public Mobile find(long code) throws Exception {
+		return this.getEntityManager().find(Mobile.class, code);
 	}
 
 }
