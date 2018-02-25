@@ -8,26 +8,30 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
+//@Cacheable
+//@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Mobile implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long code;
 	private String model;
 	private int price;
 	private String brand;
-	private String phot​oUrl;
+	
+	private String imageLink;
 	private String date;
 
 	public Mobile(String model, int price, String brand, String photoUrl, String date) {
 		this.model = model;
 		this.price = price;
 		this.brand = brand;
-		this.phot​oUrl = photoUrl;
+		this.imageLink = photoUrl;
 		this.date = date;
 	}
 
@@ -58,12 +62,12 @@ public class Mobile implements Serializable {
 		this.brand = brand;
 	}
 
-	public String getPhot​oUrl() {
-		return phot​oUrl;
+	public String getImageLink() {
+		return imageLink;
 	}
 
-	public void setPhot​oUrl(String phot​oUrl) {
-		this.phot​oUrl = phot​oUrl;
+	public void setImageLink(String phot​oUrl) {
+		this.imageLink = phot​oUrl;
 	}
 
 	public String getDate() {

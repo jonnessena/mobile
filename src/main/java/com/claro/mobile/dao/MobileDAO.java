@@ -2,17 +2,20 @@ package com.claro.mobile.dao;
 
 import java.util.List;
 
-import org.springframework.data.repository.PagingAndSortingRepository;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import org.springframework.stereotype.Repository;
 
 import com.claro.mobile.entity.Mobile;
-import com.claro.mobile.model.MobileDTO;
 
-@RepositoryRestResource(collectionResourceRel = "mobileDAOImpl", path = "mobileDAOImpl")
-public interface MobileDAO extends PagingAndSortingRepository<Mobile, Long> {
+@Repository("mobileDAO")
+public class MobileDAO extends AbstractDAO implements IMobileDAO {
 
-	public List<MobileDTO> list();
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7982713956037719530L;
 
-	public MobileDTO add(Mobile mob);
+	public List<Mobile> list() {
+		return this.getEntityManager().createQuery("select m from Mobile m").getResultList();
+	}
 
 }
