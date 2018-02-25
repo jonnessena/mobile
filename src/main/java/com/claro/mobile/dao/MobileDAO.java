@@ -20,7 +20,6 @@ public class MobileDAO extends AbstractDAO implements IMobileDAO {
 
 	public Mobile create(Mobile mob) throws Exception {
 		this.getEntityManager().persist(mob);
-		this.getEntityManager().flush();
 		return mob;
 	}
 
