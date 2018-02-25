@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.claro.mobile.dao.IMobileDAO;
 import com.claro.mobile.model.MobileConverter;
@@ -23,6 +24,7 @@ public class MobileService implements IMobileService {
 		return MobileConverter.toListDTO(dao.list());
 	}
 
+	@Transactional
 	public MobileDTO create(MobileDTO dto) throws Exception {
 		return MobileConverter.toDTO(dao.create(MobileConverter.toMobile(dto)));
 	}
